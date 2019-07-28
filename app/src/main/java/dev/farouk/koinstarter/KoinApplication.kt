@@ -1,7 +1,9 @@
 package dev.farouk.koinstarter
 
 import android.app.Application
-import dev.farouk.koinstarter.di.moduleSalut
+import dev.farouk.koinstarter.di.appModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 class KoinApplication: Application() {
@@ -11,7 +13,9 @@ class KoinApplication: Application() {
 
         // start koin
         startKoin {
-            modules(moduleSalut)
+            androidLogger()
+            androidContext(this@KoinApplication)
+            modules(appModule)
         }
     }
 }
